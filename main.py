@@ -2,13 +2,13 @@ import influxdb_client, time
 from influxdb_client import InfluxDBClient, Point, WritePrecision
 from influxdb_client.client.write_api import SYNCHRONOUS
 
-token = "token"
-org = "org_name"
-url = "influxdb_url"
+token = "qgAmUA05an7hPLzI9IMml0ADhrr2hf24eN4zrgKnxl3gdM3OlpYr81cqMePOxMrmigdbvbUeHyUO3bx6U9Kg7Q=="
+org = "ASA"
+url = "http://172.16.0.50:8086"
 
 write_client = influxdb_client.InfluxDBClient(url=url, token=token, org=org)
 
-bucket="bucket_name"
+bucket="test_data"
 
 write_api = write_client.write_api(write_options=SYNCHRONOUS)
 
@@ -32,5 +32,5 @@ while True:
   )
 
   print(f'Written point: Temperature: {temperature}, Altitude: {altitude},  Humidity: {humidity}, Pressure: {pressure}, CO2: {CO2},CO: {CO}, CH4: {CH4}, N2O: {N2O}, S2O: {S2O}, Latitude: {latitude}, Longitude: {longitude}, Battery: {battery}')
-  write_api.write(bucket=bucket, org="org_name", record=point)
+  write_api.write(bucket=bucket, org="ASA", record=point)
   time.sleep(1)
