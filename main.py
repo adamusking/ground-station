@@ -2,7 +2,7 @@ import influxdb_client, time
 from influxdb_client import InfluxDBClient, Point, WritePrecision
 from influxdb_client.client.write_api import SYNCHRONOUS
 
-token = "qgAmUA05an7hPLzI9IMml0ADhrr2hf24eN4zrgKnxl3gdM3OlpYr81cqMePOxMrmigdbvbUeHyUO3bx6U9Kg7Q=="
+token = "I3UpUY4J4S1oYxYpry8KZ-JS4wInVChIouw_n5URylAuFnALEikjkI18H8X3Cms7unIKOmgLhlSknxABeNC52A=="
 org = "ASA"
 url = "http://172.16.0.50:8086"
 
