@@ -13,12 +13,12 @@ write_api = write_client.write_api(write_options=SYNCHRONOUS)
 while True:
     temperature = round(random.uniform(-15, 30), 2)
     humidity = round(random.uniform(0, 100), 2)
-    pressure = round(random.uniform(800, 1050), 2)
-    CO2 = round(random.uniform(400, 2000), 2)
-    CO = round(random.uniform(0, 10), 2)
-    CH4 = round(random.uniform(0.5, 10), 2)
-    N2O = round(random.uniform(0, 5), 2)
-    S2O = round(random.uniform(0, 10), 2)
+    pressure = round(random.uniform(950, 1050), 2)
+    CO2 = round(random.uniform(400, 1500), 2)
+    CO = round(random.uniform(0, 30), 2)
+    CH4 = round(random.uniform(1.8, 3.5), 2)
+    N2O = round(random.uniform(0.2, 1.5), 2)
+    S2O = round(random.uniform(0, 20), 2)
     latitude = 48.6690
     longitude = 19.6990
     battery = round(random.uniform(0, 100), 2)
