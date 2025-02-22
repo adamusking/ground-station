@@ -11,17 +11,17 @@ bucket = "test_data"
 write_api = write_client.write_api(write_options=SYNCHRONOUS)
 
 while True:
-    temperature = round(random.uniform(-10, 30), 2)
+    temperature = round(random.uniform(-15, 30), 2)
     humidity = round(random.uniform(0, 100), 2)
-    pressure = round(random.uniform(950, 1050), 2)
-    CO2 = round(random.uniform(400, 600), 2)
-    CO = round(random.uniform(0, 9), 2)
-    CH4 = round(random.uniform(1, 3), 2)
-    N2O = round(random.uniform(300, 350), 2)
-    S2O = round(random.uniform(0, 50), 2)
-    latitude = round(random.uniform(-90, 90), 6)
-    longitude = round(random.uniform(-180, 180), 6)
-    battery = round(random.uniform(3.5, 4.2), 2)
+    pressure = round(random.uniform(800, 1050), 2)
+    CO2 = round(random.uniform(400, 2000), 2)
+    CO = round(random.uniform(0, 10), 2)
+    CH4 = round(random.uniform(0.5, 10), 2)
+    N2O = round(random.uniform(0, 5), 2)
+    S2O = round(random.uniform(0, 10), 2)
+    latitude = 48.6690
+    longitude = 19.6990
+    battery = round(random.uniform(0, 100), 2)
     altitude = round(random.uniform(0, 1000), 2)
 
     point = (
