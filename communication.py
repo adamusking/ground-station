@@ -3,8 +3,8 @@ import time
 import threading
 import queue
 import sys
-from PySX127x.LoRa import LoRa
-from PySX127x.board_config import BOARD
+from SX127x.LoRa import *
+from SX127x.board_config import BOARD
 
 # Initialize board
 BOARD.setup()
@@ -44,7 +44,6 @@ command_map = {
 }
 
 def read_input():
-    """Reads full-linende input in a separate thread and stores it in a queue."""
     while True:
         user_input = sys.stdin.readline().strip()
         input_queue.put(user_input)
