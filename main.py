@@ -2,12 +2,12 @@ import influxdb_client, time, random
 from influxdb_client import InfluxDBClient, Point, WritePrecision
 from influxdb_client.client.write_api import SYNCHRONOUS
 
-token = "I3UpUY4J4S1oYxYpry8KZ-JS4wInVChIouw_n5URylAuFnALEikjkI18H8X3Cms7unIKOmgLhlSknxABeNC52A=="
+token = "pceFzsaIvLUuLJI-S86z1PjsbryT5gqnhBEWGRfrhH39pwN7G6SAU5ZWEgY_YAYyuiqp6HhFcGq4p2WhqGo5dg=="
 org = "ASA"
-url = "http://172.16.0.50:8086"
+url = "http://172.16.0.73:8086"
 
 write_client = InfluxDBClient(url=url, token=token, org=org)
-bucket = "test_data"
+bucket = "cansat_telemetry"
 write_api = write_client.write_api(write_options=SYNCHRONOUS)
 
 while True:
