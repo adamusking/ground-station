@@ -14,9 +14,9 @@ print("Begin LoRa radio")
 if not lora.begin():
     raise Exception("Something wrong, can't begin LoRa radio")
 
-# Set frequency to 915 MHz
-print("Set frequency to 915 MHz")
-lora.setFrequency(868000000)
+# Set frequency to 866 MHz
+print("Set frequency to 866 MHz")
+lora.setFrequency(866000000)
 
 # Set RX gain. RX gain options are power saving gain or boosted gain
 print("Set RX gain to power saving gain")
@@ -35,9 +35,9 @@ lora.setPreambleLength(12)
 lora.setPayloadLength(15)
 lora.setCrcEnable(True)
 
-# Set synchronize word for public network (0x34)
-print("Set synchronize word to 0x34")
-lora.setSyncWord(0x34)
+# Set synchronize word (0xA5)
+print("Set synchronize word to 0xA5")
+lora.setSyncWord(0xA5)
 
 print("\n-- LoRa Receiver --\n")
 
