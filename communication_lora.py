@@ -56,6 +56,7 @@ print("LoRa Ground Station Started...")
 
 while True:
     packet_id = "UNKNOWN"  # Default in case no ID is found
+    command = ""
 
     if not input_queue.empty(): 
         command = input_queue.get().lower()
@@ -90,7 +91,7 @@ while True:
     elif status == lora.STATUS_HEADER_ERR:
         print("Packet header error")
 
-    if message.startswith("ID:"):
+    if message.startswith("ID"):
         parts = message.split(",")  # Split by comma
         if len(parts) > 0:
             packet_id = parts[0].split(":")[1]  # Extract ID value
