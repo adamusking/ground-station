@@ -24,10 +24,9 @@ lora.setSpreadingFactor(7)
 lora.setBandwidth(125000)
 lora.setCodeRate(5)
 
-print("Set packet parameters:\n\tExplicit header type\n\tPreamble length = 12\n\tPayload Length = 15\n\tCRC on")
+print("Set packet parameters:\n\tExplicit header type\n\tPreamble length = 12\n\tPayload Length = variable (automatic)\n\tCRC on")
 lora.setHeaderType(lora.HEADER_EXPLICIT)
 lora.setPreambleLength(12)
-lora.setPayloadLength(15)
 lora.setCrcEnable(True)
 
 print("Set synchronize word to 0xA5")
@@ -113,7 +112,6 @@ while True:
     lora.wait()
     print("Transmit time: {0:0.2f} ms | Data rate: {1:0.2f} byte/s".format(lora.transmitTime(), lora.dataRate()))
     
-    time.sleep(5)
     counter = (counter + 1) % 256
 
     '''
