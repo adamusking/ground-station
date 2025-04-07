@@ -51,61 +51,49 @@ radio.writeRegister(0x09, 0b10001111)  # RegPaConfig
 print("FSK Ground Station Started...")
 
 while True:
-    packet_id = "UNKNOWN"  # Default in case no ID is found
-    command = ""
-    
+    # Request for receiving new FSK packet
     radio.request()
+    # Wait for incoming radio packet
     radio.wait()
 
+    print("\n\n---Receiving---")
+    # Put received packet to message and counter variable
     message = ""
     while radio.available() > 1:
         message += chr(radio.read())
     counter = radio.read()
 
+    # Print received message and counter
     print(f"{message}  {counter}")
+
+    # Print packet/signal status including RSSI, SNR, and signalRSSI
     print("Packet status: RSSI = {0:0.2f} dBm | SNR = {1:0.2f} dB".format(radio.packetRssi(), radio.snr()))
     
+    packet_id = int(message.split(',')[0].split(':')[1])
+    
+
+
+    # Show received status in case CRC or header error occur
     status = radio.status()
     if status == radio.STATUS_CRC_ERR:
         print("CRC error")
     elif status == radio.STATUS_HEADER_ERR:
         print("Packet header error")
 
-    if message.startswith("ID"):
-        parts = message.split(",")  # Split by comma
-        if len(parts) > 0:
-            packet_id = parts[0].split(":")[1]  # Extract ID value
-    
-
-    time.sleep(0.1)
-
-    ack = f"ACK{packet_id}, {command}"
+    ack = f"ACK{packet_id}"
     ack_list = [ord(c) for c in ack]
     counter1 = 0
-
+    
+    print("\n\n---Transmitting---")
     radio.beginPacket()
     radio.write(ack_list, len(ack_list))
-    radio.write([counter], 1)
+    radio.write([counter1], 1)
     radio.endPacket()
     
-    print(f"Packet sent: {ack}  {counter}") 
+    print(f"Sending: {ack}  {counter1}")
     
     radio.wait()
     print("Transmit time: {0:0.2f} ms | Data rate: {1:0.2f} byte/s".format(radio.transmitTime(), radio.dataRate()))
     
-    counter = (counter + 1) % 256
-
-    '''
-    if mode != prev_mode:
-        if mode:
-            print(f"Switching to LoRa...")
-            radio.set_mode_rx()  # LoRa mode (default)
-        else:
-            print(f"Switching to FSK...")
-            radio.write_register(0x2C, 0x10)  # Enable CRC for FSK
-            radio.write_register(0x01, 0x00)  # Put radio in standby
-            radio.write_register(0x01, 0x20)  # Set to FSK mode
-            radio.set_mode_rx()  # Back to RX
-        
-        prev_mode = mode  # Update the last mode
-    '''
+   
+    counter1 = (counter1 + 1) % 256
