@@ -96,7 +96,7 @@ while True:
             packet_id = parts[0].split(":")[1]  # Extract ID value
     
 
-            
+    time.sleep(0.1)
 
     ack = f"ACK{packet_id}, {command}"
     ack_list = [ord(c) for c in ack]
@@ -104,11 +104,11 @@ while True:
 
     lora.beginPacket()
     lora.write(ack_list, len(ack_list))
-    lora.write([counter1], 1)
+    lora.write([counter], 1)
     lora.endPacket()
-
-    print(f"Sending ACK: {ack}  {counter1}")
-
+    
+    print(f"Packet sent: {ack}  {counter}") 
+    
     lora.wait()
     print("Transmit time: {0:0.2f} ms | Data rate: {1:0.2f} byte/s".format(lora.transmitTime(), lora.dataRate()))
     
