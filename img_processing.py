@@ -45,6 +45,6 @@ def display(img):
 
 input = "./test_img/ddd.png"
 output = "./test_img/output.png"
-display(generate_light_intensity_map(input, output))
-
+#display(generate_light_intensity_map(input, output))
+generate_light_intensity_map(input, output)
 

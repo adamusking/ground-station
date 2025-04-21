@@ -16,7 +16,7 @@ if not lora.begin():
 
 # Set frequency to 915 MHz
 print("Set frequency to 915 MHz")
-lora.setFrequency(868000000)
+lora.setFrequency(866000000)
 
 # Set TX power to +17 dBm using PA_BOOST
 print("Set TX power to +17 dBm")
@@ -31,13 +31,13 @@ lora.setCodeRate(5)
 # Configure packet parameters
 print("Set packet parameters:\n\tExplicit header type\n\tPreamble length = 12\n\tPayload Length = 15\n\tCRC on")
 lora.setHeaderType(lora.HEADER_EXPLICIT)
-lora.setPreambleLength(12)
-lora.setPayloadLength(15)
+lora.setPreambleLength(8)
+#lora.setPayloadLength(15)
 lora.setCrcEnable(True)
 
 # Set synchronization word
 print("Set synchronization word to 0x34")
-lora.setSyncWord(0x34)
+lora.setSyncWord(0xA5)
 
 print("\n-- LoRa Transmitter --\n")
 
