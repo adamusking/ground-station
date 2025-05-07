@@ -16,11 +16,11 @@ if not lora.begin():
 
 # Set frequency to 866 MHz
 print("Set frequency to 866 MHz")
-lora.setFrequency(866000000)
+lora.setFrequency(869525000)
 
 # Set RX gain. RX gain options are power saving gain or boosted gain
-print("Set RX gain to power saving gain")
-lora.setRxGain(lora.RX_GAIN_POWER_SAVING, lora.RX_GAIN_AUTO)  # AGC on, Power saving gain
+print("Set RX gain to boosted gain")
+lora.setRxGain(lora.RX_GAIN_BOOSTED, lora.RX_GAIN_AUTO)  # AGC on, Power saving gain
 
 print("Set TX power to +17 dBm")
 lora.setTxPower(17, lora.TX_POWER_PA_BOOST)
@@ -32,10 +32,10 @@ lora.setBandwidth(125000)
 lora.setCodeRate(5)
 
 # Configure packet parameters
-print("Set packet parameters:\n\tExplicit header type\n\tPreamble length = 12\n\tPayload Length = 255\n\tCRC on")
+print("Set packet parameters:\n\tExplicit header type\n\tPreamble length = 12\n\tPayload Length = 60\n\tCRC on")
 lora.setHeaderType(lora.HEADER_EXPLICIT)
 lora.setPreambleLength(12)
-lora.setPayloadLength(255)
+lora.setPayloadLength(60)
 lora.setCrcEnable(True)
 
 # Set synchronize word (0xA5)
@@ -52,14 +52,6 @@ def receive_packets():
     # Wait for incoming LoRa packet
     lora.wait()
 
-    # Put received packet to message and counter variable
-    """
-    message = ""
-    while lora.available() > 1:
-        message += chr(lora.read())
-    counter = lora.read()
-    """
-
     raw_data = []
 
 # Read available bytes from the LoRa receiver
@@ -67,11 +59,11 @@ def receive_packets():
         raw_data.append(lora.read())
 
     print(f"Raw bytes: {raw_data}")
-
+    
     # Example of decoding a uint8_t value from the raw data
 
     # Print packet/signal status including RSSI, SNR, and signalRSSI
-    print("Packet status: RSSI = {0:0.2f} dBm | SNR = {1:0.2f} dB".format(lora.packetRssi(), lora.snr()))
+    print("Packet status: RSSI = {0:0.2f} dBm | SNR = {1:0.2f} dB".format(lora.packetRssi(),lora.snr()))
 
     # Print received message and counter
     #print(f"{message}  {counter}")

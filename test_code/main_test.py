@@ -3,7 +3,7 @@ from datetime import datetime
 import RPi.GPIO as GPIO
 from influxdb_client import InfluxDBClient, Point, WritePrecision
 from influxdb_client.client.write_api import SYNCHRONOUS
-from lora_influx2 import receive_packets, lora
+from lora_prod import receive_packets, lora
 
 pinLED1 = 6 # received  
 pinLED2 = 13  # transmitted
@@ -18,12 +18,12 @@ org = "ASA"
 url = "http://127.0.0.1:8086"
 
 write_client = InfluxDBClient(url=url, token=token, org=org)
-bucket = "cansat_telemetry"
+bucket = "cansat_test"
 write_api = write_client.write_api(write_options=SYNCHRONOUS)
 
 #counter1 = 0
 
-header_names = ["time", "temperature", "pressure", "CO2", "CO", "CH4", "N2O", "S2O", "speed", "latitude", "longitude", "battery", "altitude"]
+header_names = ["time", "temperature", "pressure", "gpsAltitude", "pressureAltitude", "gpsAltSeaLevel", "pressureAltSeaLevel", "verticalSpeed","horizontalSpeed", "battery", "latitude", "longitude", "predictedLongitude", "predictedLatitude",  "CO2", "CO", "CH4", "NO2", "SO2", "TVOC"]
 
 file_exists = os.path.isfile('data.csv')
 
@@ -66,21 +66,20 @@ while True:
     print(f"Sent ACK: {ack}")
     print("Transmit time: {0:.2f} ms | Data rate: {1:.2f} byte/s".format(
         lora.transmitTime(), lora.dataRate()))
-
-    #counter1 = (counter1 + 1) % 256
     
     temperature = float(raw_data[1])
     pressure = float(raw_data[2])
     CO2 = float(raw_data[3])
     CO = float(raw_data[4])
     CH4 = float(raw_data[5])
-    N2O = float(raw_data[6])
-    S2O = float(raw_data[7])
+    NO2 = float(raw_data[6])
+    SO2 = float(raw_data[7])
     speed = float(raw_data[8])
     latitude = float(raw_data[9])
     longitude = float(raw_data[10])
     battery = float(raw_data[11])
     altitude = float(raw_data[12])
+    TVOC = float(raw_data[13])
 
     
     point = (
@@ -88,29 +87,40 @@ while True:
         .tag("device_id", "cansat_01")
         .field("temperature", temperature)
         .field("pressure", pressure)
-        .field("CO2", CO2)
-        .field("CO", CO)
-        .field("speed", speed)
-        .field("CH4", CH4)
-        .field("N2O", N2O)
-        .field("S2O", S2O)
+        .field("gpsAltitude", gpsAltitude)
+        .field("pressureAltitude", pressureAltitude)
+        .field("gpsAltSeaLevel", gpsAltSeaLevel)
+        .field("pressureAltSeaLevel", pressureAltSeaLevel)
+        .field("verticalSpeed", verticalSpeed)
+        .field("horizontalSpeed", horizontalSpeed)
+        .field("Battery", battery)
         .field("latitude", latitude)
         .field("longitude", longitude)
-        .field("Battery", battery)
-        .field("altitude", altitude)
+        .field("predictedLongitude", predictedLongitude)
+        .field("predictedLatitude", predictedLatitude)
+        .field("CO2", CO2)
+        .field("CO", CO)
+        .field("CH4", CH4)
+        .field("NO2", NO2)
+        .field("SO2", SO2)
+        .field("TVOC", TVOC)
+        
     )
 
     print("\n\n")
     print("---WRITTING TO INFLUXDB---")
-    print(f'Written point: Temperature: {temperature}, Altitude: {altitude}, '
-          f'Pressure: {pressure}, CO2: {CO2}, CO: {CO}, CH4: {CH4}, N2O: {N2O}, S2O: {S2O}, '
-          f'Latitude: {latitude}, Longitude: {longitude}, Battery: {battery}, Speed: {speed}')
+    print(
+    f'Written point: Temperature: {temperature}, Pressure: {pressure}, '
+    f'GPS Altitude: {gpsAltitude}, Pressure Altitude: {pressureAltitude}, '
+    f'GPS Altitude (Sea Level): {gpsAltSeaLevel}, Pressure Altitude (Sea Level): {pressureAltSeaLevel}, '
+    f'Horizontal Speed: {horizontalSpeed}, Vertical Speed: {verticalSpeed}, Battery: {battery}, Latitude: {latitude}, Longitude: {longitude}, '
+    f'Predicted Latitude: {predictedLatitude}, Predicted Longitude: {predictedLongitude}, '
+    f'CO₂: {CO2}, CO: {CO}, CH₄: {CH4}, NO₂: {NO2}, SO₂: {SO2}, TVOC: {TVOC}')
     write_api.write(bucket=bucket, org=org, record=point)
         
      
     data_row = [
-            receive_time, raw_data[1], raw_data[2], raw_data[3], raw_data[4], raw_data[5], raw_data[6],
-            raw_data[7], raw_data[8], raw_data[9], raw_data[10], raw_data[11], raw_data[12]
+            
         ]
 
     with open('data.csv', 'a', newline='') as csvfile:

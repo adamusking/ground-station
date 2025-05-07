@@ -43,8 +43,8 @@ def display(img):
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
-input = "./test_img/ddd.png"
-output = "./test_img/output.png"
+input = "./LP-images/img.jpeg"
+output = "./LP-images/output.jpeg"
 #display(generate_light_intensity_map(input, output))
 generate_light_intensity_map(input, output)
 
