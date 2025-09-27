@@ -31,6 +31,15 @@ The Ground Station performs the following tasks:
 
 ---
 
+## LoRa Telemetry Reception
+
+The Ground Station uses a **LoRa module** connected to the Raspberry Pi 4 to receive telemetry data from the CanSat.  
+
+- **Data received:** Altitude, temperature, pressure, CO₂, SO₂, and other sensors.  
+- **Command transmission:** The Ground Station sends ACK commands (`WIFI` / `WIFI_NO`) back to the CanSat via LoRa.  
+- **Low-power, long-range communication:** LoRa enables reliable telemetry reception over the full mission range (~1 km altitude).
+
+
 ## WiFi-Based File Transfer Protocol
 
 The CanSat can connect to the Ground Station over WiFi using a USB WiFi dongle connected to the Raspberry Pi. The communication flow is as follows:
@@ -50,10 +59,10 @@ The CanSat can connect to the Ground Station over WiFi using a USB WiFi dongle c
 The Ground Station visualizes telemetry data using **Grafana dashboards**, showing both real-time and historical measurements.
 
 <p align="center">
-  <img width="2838" height="1220" alt="image" src="https://github.com/user-attachments/assets/b70e2b0b-1930-415f-a03d-e745c55c0aad"/>
+  <img width="800" height="1000" alt="image" src="https://github.com/user-attachments/assets/b70e2b0b-1930-415f-a03d-e745c55c0aad"/>
 </p>
 <p align="center">
-  <img width="1420" height="686" alt="image" src="https://github.com/user-attachments/assets/0712c4d8-d04c-41d6-8476-5608bb670d1d"/>
+  <img width="800" height="1000" alt="image" src="https://github.com/user-attachments/assets/0712c4d8-d04c-41d6-8476-5608bb670d1d"/>
 </p>
 
 The dashboards include:
@@ -71,8 +80,8 @@ In addition to standard telemetry, the Ground Station processes images from the 
 - Analyzing brightness and light intensity to estimate light pollution in the surveyed area.
 - Storing results locally or in CSV for further analysis.
   
-<p align="center>
-  <img width="800" height="1000" alt="image" src="https://github.com/user-attachments/assets/f81833cb-c644-49ee-b840-59c875a7e172" />
+<p align="center">
+  <img width="800" height="1000" alt="image" src="LP-images/output.jpeg"/>
 </p>
 
 ---
