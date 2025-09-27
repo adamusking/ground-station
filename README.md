@@ -81,7 +81,7 @@ In addition to standard telemetry, the Ground Station processes images from the 
 - Storing results locally or in CSV for further analysis.
   
 <p align="center">
-  <span style="display: inline-flex; gap: 20px; align-items: flex-start;">
+  <span style="display: inline-flex; gap: 50px; align-items: flex-start;">
     <img src="https://github.com/user-attachments/assets/d018b6a4-0ddf-49dc-a820-7c0ca4a77e7a" alt="Light Pollution 1" width="300"/>
     <img src="https://github.com/user-attachments/assets/9d4708b8-715a-43c8-9361-770bc6c737be" alt="Light Pollution 2" width="300"/>
   </span>
