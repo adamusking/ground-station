@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="3595" height="2084" alt="image" src="https://github.com/user-attachments/assets/972b4348-90fc-4816-bf2c-7195b86cb4eb" />
+  <img width="3595" height="2084" alt="image" src="https://github.com/user-attachments/assets/972b4348-90fc-4816-bf2c-7195b86cb4eb"/>
 </p>
 
 # CanSat_01 Ground Station
@@ -49,11 +49,11 @@ The CanSat can connect to the Ground Station over WiFi using a USB WiFi dongle c
 
 The Ground Station visualizes telemetry data using **Grafana dashboards**, showing both real-time and historical measurements.
 
-<p align="center>
+<p align="center">
   <img width="2838" height="1220" alt="image" src="https://github.com/user-attachments/assets/b70e2b0b-1930-415f-a03d-e745c55c0aad"/>
 </p>
-<p align="center>
-  <img width="1420" height="686" alt="image" src="https://github.com/user-attachments/assets/0712c4d8-d04c-41d6-8476-5608bb670d1d" />
+<p align="center">
+  <img width="1420" height="686" alt="image" src="https://github.com/user-attachments/assets/0712c4d8-d04c-41d6-8476-5608bb670d1d"/>
 </p>
 
 The dashboards include:
@@ -72,7 +72,7 @@ In addition to standard telemetry, the Ground Station processes images from the 
 - Storing results locally or in CSV for further analysis.
   
 <p align="center>
-  https://github.com/adamusking/ground-station/blob/main/LP-images/output.jpeg?raw=true<img width="932" height="1242" alt="image" src="https://github.com/user-attachments/assets/f81833cb-c644-49ee-b840-59c875a7e172" />
+  <img width="800" height="1000" alt="image" src="https://github.com/user-attachments/assets/f81833cb-c644-49ee-b840-59c875a7e172" />
 </p>
 
 ---
