@@ -79,8 +79,11 @@ In addition to standard telemetry, the Ground Station processes images from the 
 - Receiving images from the CanSat SD card via WiFi/FTP.
 - Analyzing brightness and light intensity to estimate light pollution in the surveyed area.
 - Storing results locally or in CSV for further analysis.
-  
-<p align="center">
+- 
+<p align="left">
+  <img width="550" height="900" alt="image" src="https://github.com/user-attachments/assets/d018b6a4-0ddf-49dc-a820-7c0ca4a77e7a" />
+</p>  
+<p align="right">
   <img width="550" height="900" alt="image" src="https://github.com/user-attachments/assets/9d4708b8-715a-43c8-9361-770bc6c737be" />
 </p>
 
