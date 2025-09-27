@@ -80,16 +80,10 @@ In addition to standard telemetry, the Ground Station processes images from the 
 - Analyzing brightness and light intensity to estimate light pollution in the surveyed area.
 - Storing results locally or in CSV for further analysis.
   
-<table>
-  <tr>
-    <td>
-      <img src="https://github.com/user-attachments/assets/d018b6a4-0ddf-49dc-a820-7c0ca4a77e7a" alt="Image 1" width="300"/>
-    </td>
-    <td>
-      <img src="https://github.com/user-attachments/assets/9d4708b8-715a-43c8-9361-770bc6c737be" alt="Image 2" width="300"/>
-    </td>
-  </tr>
-</table>
+<div style="display: flex; justify-content: space-around; align-items: flex-start;">
+  <img src="https://github.com/user-attachments/assets/d018b6a4-0ddf-49dc-a820-7c0ca4a77e7a" alt="Image 1" width="300"/>
+  <img src="https://github.com/user-attachments/assets/9d4708b8-715a-43c8-9361-770bc6c737be" alt="Image 2" width="300"/>
+</div>
 
 ---
 
