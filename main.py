@@ -8,6 +8,7 @@ from influxdb_client import InfluxDBClient, Point, WritePrecision
 from influxdb_client.client.write_api import SYNCHRONOUS
 from lora import receive_packets, lora
 from dataclasses import dataclass
+from dotenv import load_dotenv
 import struct
 
 pinLED1 = 6 # received  
@@ -18,12 +19,15 @@ GPIO.setwarnings(False)
 GPIO.setup(pinLED1, GPIO.OUT)
 GPIO.setup(pinLED2, GPIO.OUT)
 
-token = "onC-rXnz0Y_RlNFZzTyvfgHYFMBLm_XcCE_YqpTuTbygTqGIYn-4AL9PSn7eOj0b-iqgMb2IcpiOsHn7jAMUJQ=="
-org = "ASA"
-url = "http://127.0.0.1:8086"
+load_dotenv()
+
+token = os.getenv("INFLUX_TOKEN")
+org = os.getenv("INFLUX_ORG")
+url = os.getenv("INFLUX_URL")
+bucket = os.getenv("INFLUX_BUCKET")
 
 write_client = InfluxDBClient(url=url, token=token, org=org)
-bucket = "cansat_telemetry"
+bucket = os.getenv("INFLUX_BUCKET")
 write_api = write_client.write_api(write_options=SYNCHRONOUS)
 
 header_names = ["time","temperature","pressure","gpsAltitude","pressureAltitude","gpsAltSeaLevel", "pressureAltSeaLevel","verticalSpeed","horizontalSpeed","batteryVoltage","battery","latitude","longitude", "predictedLongitude","predictedLatitude","CO2","CO","CH4","NO2","SO2","TVOC"]
