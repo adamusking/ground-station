@@ -96,3 +96,6 @@ In addition to standard telemetry, the Ground Station processes images from the 
 
 ---
 
+## Documentation
+For detailed information on the project, including design specifications, testing procedures, and mission reports, please refer to the [Adlerka Space Agency website](https://adlerkaspaceagency.eu/index.html).
+
