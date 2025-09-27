@@ -8,6 +8,18 @@ The **Ground Station** is the central hub for receiving, storing, and visualizin
 
 ---
 
+
+## Repository Structure
+
+- **`main.py`** – Main Ground Station script handling LoRa reception, ACK commands, CSV logging, and data routing.  
+- **`lora.py`** – LoRa communication interface for receiving telemetry from the CanSat.  
+- **`img_processing.py`** – Processes images from the CanSat to analyze **light pollution**.  
+- **`data.csv`** – Local CSV log of received telemetry data.  
+- **`test_code/`** – Scripts for testing and validating individual components of the ground station.  
+- **`__pycache__/`** – Python cache files (automatically generated).  
+
+---
+
 ## Overview
 
 The Ground Station performs the following tasks:
@@ -33,17 +45,34 @@ The CanSat can connect to the Ground Station over WiFi using a USB WiFi dongle c
 
 ---
 
-## Repository Structure
+## Data Visualization
 
-- **`main.py`** – Main Ground Station script handling LoRa reception, ACK commands, and data routing.  
-- **`lora.py`** – LoRa communication interface.  
-- **`csv_logger.py`** – Handles local CSV logging.  
-- **`influxdb_handler.py`** – Stores and retrieves telemetry data from InfluxDB 2.  
-- **`ftp_server/`** – FTP server configuration for image and CSV file reception.  
-- **`grafana/`** – Grafana dashboards for real-time visualization.
+The Ground Station visualizes telemetry data using **Grafana dashboards**, showing both real-time and historical measurements.
+
 <p align="center>
   <img width="2838" height="1220" alt="image" src="https://github.com/user-attachments/assets/b70e2b0b-1930-415f-a03d-e745c55c0aad"/>
+</p>
+<p align="center>
   <img width="1420" height="686" alt="image" src="https://github.com/user-attachments/assets/0712c4d8-d04c-41d6-8476-5608bb670d1d" />
+</p>
+
+The dashboards include:
+
+- Real-time sensor readings (temperature, pressure, CO₂, SO₂, etc.)
+- Historical trends stored in **InfluxDB 2**
+
+---
+
+## Light Pollution Analysis
+
+In addition to standard telemetry, the Ground Station processes images from the CanSat to analyze **light pollution**. This is handled by the `img_processing.py` script and involves:
+
+- Receiving images from the CanSat SD card via WiFi/FTP.
+- Analyzing brightness and light intensity to estimate light pollution in the surveyed area.
+- Storing results locally or in CSV for further analysis.
+  
+<p align="center>
+  https://github.com/adamusking/ground-station/blob/main/LP-images/output.jpeg?raw=true<img width="932" height="1242" alt="image" src="https://github.com/user-attachments/assets/f81833cb-c644-49ee-b840-59c875a7e172" />
 </p>
 
 ---
