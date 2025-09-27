@@ -81,7 +81,7 @@ In addition to standard telemetry, the Ground Station processes images from the 
 - Storing results locally or in CSV for further analysis.
   
 <p align="center">
-  <img width="800" height="1000" alt="image" src="LP-images/output.jpeg"/>
+  <img width="800" alt="image" src="LP-images/output.jpeg"/>
 </p>
 
 ---
